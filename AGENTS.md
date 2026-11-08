@@ -212,8 +212,8 @@ This repo is also a Claude Code plugin marketplace (`coolbitx-ui-guide`) with on
   /plugin install coolbitx@coolbitx-ui-guide
   ```
 
-  To update, `git pull` in the clone, then run `/plugin marketplace update coolbitx-ui-guide`.
+  To update, `git pull` in the clone, then follow **Updates** below.
 - **Use:** the skill fires on its own when someone asks for CoolBitX or CoolWallet UI. To invoke it directly, use `/coolbitx:ui-guide`.
-- **Updates:** `plugin.json` has no `version`, so every pushed commit is a new release. If a teammate doesn't see a change, they run `/plugin marketplace update coolbitx-ui-guide`. Background auto-update of a private repo may need a GitHub token in the environment.
+- **Updates:** `plugin.json` has no `version`, so every pushed commit is a new release. If a teammate doesn't see a change, they run both `/plugin marketplace update coolbitx-ui-guide` and `/plugin update coolbitx@coolbitx-ui-guide`, then restart Claude Code. The first command alone only refreshes the catalog and leaves the installed plugin on its old commit. Background auto-update of a private repo may need a GitHub token in the environment.
 - **Cost:** about 250 tokens in every session (the skill description), and about 1.1k tokens when the skill fires. The install copies the whole repo (about 22 MB) into the plugin cache.
 - **Check after editing** `.claude-plugin/` or `SKILL.md`: run `claude plugin validate .` (it should end in "Validation passed with warnings"; four warnings are expected and need no fix: no `version` (deliberate, see Updates), root `CLAUDE.md` not loaded (it's this repo's agent pointer, not plugin content), no license (only the public plugin directory requires one, and this plugin isn't submitted there), no icon (there is no square CoolBitX mark)), and `claude --plugin-dir . plugin details coolbitx`.

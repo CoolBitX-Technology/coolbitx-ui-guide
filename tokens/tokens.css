@@ -1,0 +1,137 @@
+/*
+ * CoolBitX / CoolWallet design tokens.
+ *
+ * Layer 1 (--cbx-*, --cw-*, --cwp-*, --cws-*): brand primitives, taken from the official guides
+ *   in reference/brand-guides/. Do not change these values.
+ * Layer 2 (--color-*, --font-*): semantic tokens per brand theme. Values marked "derived" are not in
+ *   any guide. They were chosen to pass WCAG AA with the brand palette. Build UI on layer 2.
+ *
+ * Usage:  <html data-brand="coolwallet" data-theme="dark">
+ *   data-brand: coolwallet (default) | coolwallet-pro | coolbitx
+ *   data-theme: light (default) | dark
+ * Load fonts/fonts.css as well (Montserrat + Barlow). Open Sans is not bundled; see AGENTS.md.
+ */
+
+:root {
+  /* ---- CoolWallet palette (2025 New Brand Guidelines) ---- */
+  --cw-yellow:   #F7B419; /* rgb(247 180 25)  */
+  --cw-navy:     #1C324A; /* rgb(28 50 74): also the guide's "Darkmode" background */
+  --cw-gray:     #939393; /* rgb(147 147 147) */
+  --cw-charcoal: #1B202A; /* rgb(27 32 42)   */
+  --cw-ink:      #1A1A1A; /* fill of the dark logo SVGs */
+  --cw-paper:    #E6E6E6; /* the guides' page background */
+  --cw-white:    #FFFFFF;
+
+  /* ---- CoolWallet Pro (2020 guide, "Pro" swatches) ---- */
+  --cwp-gold:      #C69C6D; /* rgb(198 156 109) */
+  --cwp-gold-deep: #A87E53; /* gradient midpoint, sampled from the guide */
+  --cwp-gradient-gold:   linear-gradient(225deg, #C69C6D 0%, #A87E53 50%, #C69C6D 100%);
+  --cwp-gradient-silver: linear-gradient(45deg,  #E5E5E5 0%, #D1D1D1 50%, #E5E5E5 100%);
+  --cwp-gradient-dark:   linear-gradient(90deg,  #2D3944 0%, #11181E 100%);
+
+  /* ---- CoolWallet S (legacy product, 2020 guide) ---- */
+  --cws-yellow: #FEBA11; /* fill in the S logo file; the guide swatch says #F7B419 */
+
+  /* ---- CoolBitX corporate (CoolBitX Brand Guidelines 2020) ---- */
+  --cbx-gold:     #AA8E4E; /* rgb(170 142 78); the logo SVG itself uses #AF9241 */
+  --cbx-gray:     #939393;
+  --cbx-charcoal: #1B202A;
+
+  /* ---- Type families ---- */
+  --font-montserrat: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-barlow:     "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --font-open-sans:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-helvetica:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* ---- Shape & spacing (derived, from the ad banners: square-ish buttons, generous space) ---- */
+  --radius-sm: 2px;  /* buttons, as in the ad banners */
+  --radius-md: 8px;  /* cards, inputs */
+  --radius-card: 12px; /* card-shaped product panels (the hardware is a rounded card) */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+}
+
+/* ===================== Semantic themes ===================== */
+
+/* CoolWallet: light (default) */
+:root,
+[data-brand="coolwallet"] {
+  --color-bg:          var(--cw-white);
+  --color-surface:     var(--cw-paper);
+  --color-text:        var(--cw-charcoal);   /* 16.3:1 on white */
+  --color-text-muted:  #5C5C5C;              /* derived: 5.4:1 on paper. Do not use --cw-gray for body text on light */
+  --color-border:      #CFCFCF;              /* derived */
+  --color-accent:      var(--cw-yellow);     /* fills only: never text on light (1.8:1) */
+  --color-on-accent:   var(--cw-charcoal);   /* 8.9:1 on yellow */
+  --color-link:        var(--cw-navy);
+  --color-strong-bg:   var(--cw-navy);       /* hero / band sections */
+  --color-on-strong:   var(--cw-white);
+  --font-display:      var(--font-montserrat);
+  --font-body:         var(--font-barlow);
+}
+
+/* CoolWallet: dark ("Darkmode" in the 2025 guide = navy background, yellow wordmark) */
+[data-theme="dark"],
+[data-brand="coolwallet"][data-theme="dark"] {
+  --color-bg:          var(--cw-charcoal);
+  --color-surface:     var(--cw-navy);
+  --color-text:        var(--cw-white);
+  --color-text-muted:  var(--cw-gray);       /* 5.3:1 on charcoal; on navy use for large text only (4.3:1) */
+  --color-border:      #2E3A4A;              /* derived */
+  --color-accent:      var(--cw-yellow);     /* may be used as text on dark: 7.2:1 on navy, 8.9:1 on charcoal */
+  --color-on-accent:   var(--cw-charcoal);
+  --color-link:        var(--cw-yellow);
+  --color-strong-bg:   var(--cw-navy);
+  --color-on-strong:   var(--cw-white);
+}
+
+/* CoolWallet Pro: premium, dark-first. Gold replaces yellow as the accent. */
+[data-brand="coolwallet-pro"] {
+  --color-bg:          #000000;
+  --color-surface:     var(--cw-charcoal);
+  --color-text:        var(--cw-white);
+  --color-text-muted:  var(--cw-gray);       /* 6.8:1 on black */
+  --color-border:      #2A2F38;              /* derived */
+  --color-accent:      var(--cwp-gold);      /* 8.4:1 on black, 6.5:1 on charcoal */
+  --color-on-accent:   var(--cw-charcoal);   /* 6.5:1 on gold */
+  --color-link:        var(--cwp-gold);
+  --color-strong-bg:   var(--cwp-gradient-dark);
+  --color-on-strong:   var(--cw-white);
+  --font-display:      var(--font-montserrat);
+  --font-body:         var(--font-barlow);
+}
+[data-brand="coolwallet-pro"][data-theme="light"] {
+  --color-bg:          var(--cw-white);
+  --color-surface:     var(--cw-paper);
+  --color-text:        var(--cw-charcoal);
+  --color-text-muted:  #5C5C5C;
+  --color-border:      #CFCFCF;
+  --color-accent:      var(--cwp-gold);      /* fills only on light (2.5:1 as text) */
+  --color-on-accent:   var(--cw-charcoal);
+  --color-link:        #7A5A36;              /* derived darker gold, 6.3:1 on white */
+}
+
+/* CoolBitX corporate site / investor / careers pages */
+[data-brand="coolbitx"] {
+  --color-bg:          var(--cw-white);
+  --color-surface:     #E6E7E9;              /* the CoolBitX guide's page background */
+  --color-text:        var(--cbx-charcoal);
+  --color-text-muted:  #5C5C5C;
+  --color-border:      #CFCFCF;
+  --color-accent:      var(--cbx-gold);      /* fills, rules, large display text only (3.1:1 on white) */
+  --color-on-accent:   var(--cbx-charcoal);  /* 5.2:1 on gold */
+  --color-link:        #7A6234;              /* derived darker gold, 5.8:1 on white */
+  --color-strong-bg:   var(--cbx-charcoal);
+  --color-on-strong:   var(--cw-white);
+  --font-display:      var(--font-open-sans);
+  --font-body:         var(--font-open-sans);
+}
+[data-brand="coolbitx"][data-theme="dark"] {
+  --color-bg:          var(--cbx-charcoal);
+  --color-surface:     #252B37;              /* derived */
+  --color-text:        var(--cw-white);
+  --color-text-muted:  var(--cbx-gray);
+  --color-border:      #343B48;
+  --color-accent:      var(--cbx-gold);      /* 5.2:1 on charcoal: usable as text */
+  --color-link:        var(--cbx-gold);
+}

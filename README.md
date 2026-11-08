@@ -1,0 +1,18 @@
+# CoolBitX UI Guide
+
+Brand kit for building CoolBitX and CoolWallet interfaces: design tokens, fonts, logos, product photography, and the official brand guides.
+
+- **For AI agents:** point the agent at this folder. It reads [`AGENTS.md`](AGENTS.md), which has the brand rules, which logo to use, the color contrast rules and the folder map.
+- **For people:** open [`examples/index.html`](examples/index.html) in a browser to see everything in use, or read the official guides in `reference/brand-guides/`.
+- **Source:** [CoolBitX brand-assets Google Drive folder](https://drive.google.com/drive/folders/1s5_IJSWL6yyM9jm3GTN6jFuWez9vx468). When it changes, follow the sync SOP in [`AGENTS.md` §10](AGENTS.md#10-sop-syncing-when-the-drive-folder-is-updated) (`scripts/sync-from-drive.sh`).
+
+```
+AGENTS.md          rules for agents (canonical)
+tokens/            tokens.css (CSS variables, themes) · tokens.json (design tokens)
+fonts/             Montserrat + Barlow · fonts.css
+logos/             coolbitx · coolwallet · coolwallet-pro · coolwallet-s-legacy (SVG + PNG)
+images/            product photos · INDEX.md · contact sheets
+reference/         official brand guides · ad banners · product specs · source manifest
+examples/          index.html sample page
+scripts/           sync-from-drive.sh (rebuild from a fresh Drive download)
+```

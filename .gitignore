@@ -1,0 +1,4 @@
+.DS_Store
+# Raw Drive downloads never belong in the repo; unzip them outside this folder (AGENTS.md §10).
+drive-download-*/
+*.zip

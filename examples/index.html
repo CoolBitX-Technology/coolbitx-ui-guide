@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" data-brand="coolwallet" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoolBitX UI Guide</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--color-bg); color: var(--color-text);
+    font: 400 16px/1.5 var(--font-body);
+    transition: background .2s, color .2s;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; margin: 0 0 var(--space-4); }
+  h1 { font-size: clamp(32px, 6vw, 56px); }
+  h2 { font-size: 32px; }
+  h3 { font-size: 20px; }
+  p { margin: 0 0 var(--space-4); }
+  a { color: var(--color-link); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .muted { color: var(--color-text-muted); }
+
+  /* header */
+  header { border-bottom: 1px solid var(--color-border); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-4); flex-wrap: wrap; }
+  header img { height: 32px; display: block; }
+  .switch { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+  .switch button {
+    font: 500 14px var(--font-body); padding: 6px 12px; border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border); background: transparent; color: var(--color-text); cursor: pointer;
+  }
+  .switch button[aria-pressed="true"] { background: var(--color-accent); color: var(--color-on-accent); border-color: transparent; }
+
+  /* buttons */
+  .btn {
+    display: inline-block; font: 600 16px var(--font-body); padding: 12px 24px; border-radius: var(--radius-sm);
+    background: var(--color-accent); color: var(--color-on-accent); text-decoration: none; border: 0;
+  }
+  .btn-ghost { background: transparent; color: var(--color-text); box-shadow: inset 0 0 0 1px var(--color-border); }
+
+  /* hero */
+  .hero { background: var(--color-strong-bg); color: var(--color-on-strong); }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-7); align-items: center; padding-block: var(--space-9); }
+  .hero p { font-size: 20px; opacity: .85; max-width: 32ch; }
+  .hero img { width: 100%; border-radius: var(--radius-card); display: block; }
+  .actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-5); }
+  .hero .btn-ghost { color: var(--color-on-strong); box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+
+  section { padding-block: var(--space-8); }
+  .grid { display: grid; gap: var(--space-5); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+  /* wallet card */
+  .card { background: var(--color-surface); border-radius: var(--radius-card); padding: var(--space-5); border: 1px solid var(--color-border); }
+  .balance { font: 600 40px/1.1 var(--font-body); font-variant-numeric: tabular-nums; margin: var(--space-2) 0 var(--space-4); }
+  .row { display: flex; justify-content: space-between; padding-block: var(--space-3); border-top: 1px solid var(--color-border); font-variant-numeric: tabular-nums; }
+  .up { color: var(--color-link); } /* accent-colored text must use --color-link: yellow/gold fail contrast on light */
+
+  /* swatches */
+  .sw { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border); }
+  .sw div { height: 72px; }
+  .sw p { margin: 0; padding: var(--space-2) var(--space-3); font-size: 14px; }
+  .sw code { font-size: 13px; }
+
+  .logos { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .logos figure { margin: 0; border-radius: var(--radius-md); padding: var(--space-6) var(--space-5); display: grid; place-items: center; min-height: 120px; border: 1px solid var(--color-border); }
+  .logos img { max-width: 100%; height: 40px; }
+  .logos figcaption { font-size: 13px; margin-top: var(--space-3); opacity: .8; }
+
+  footer { border-top: 1px solid var(--color-border); padding-block: var(--space-5); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+  footer img { height: 14px; vertical-align: middle; margin-left: 6px; }
+
+  @media (max-width: 760px) { .hero .wrap { grid-template-columns: 1fr; padding-block: var(--space-7); } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img id="hdr-logo" alt="CoolWallet">
+    <div class="switch" role="group" aria-label="Brand">
+      <button data-set-brand="coolwallet">CoolWallet</button>
+      <button data-set-brand="coolwallet-pro">CoolWallet Pro</button>
+      <button data-set-brand="coolbitx">CoolBitX</button>
+    </div>
+    <div class="switch" role="group" aria-label="Theme">
+      <button data-set-theme="light">Light</button>
+      <button data-set-theme="dark">Dark</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">A natural selection for evolved crypto cold storage</h1>
+      <p>Your private keys stay on a card the size of a credit card, secured by an EAL6+ certified chip.</p>
+      <div class="actions"><a class="btn" href="#">Learn more</a><a class="btn btn-ghost" href="#">Compare cards</a></div>
+    </div>
+    <img id="hero-img" src="../images/coolwallet-pro/lifestyle/card-phone-text.jpg" alt="CoolWallet Pro card next to a phone running the CoolWallet app">
+  </div>
+</div>
+
+<main class="wrap">
+  <section>
+    <h2>Wallet UI</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="muted">Total balance</div>
+        <div class="balance">$12,480.36</div>
+        <div class="row"><span>Bitcoin</span><span>0.1842 BTC</span></div>
+        <div class="row"><span>Ethereum</span><span>2.031 ETH</span></div>
+        <div class="row"><span>24h</span><span class="up">+2.14%</span></div>
+      </div>
+      <div class="card">
+        <h3>Confirm on your card</h3>
+        <p class="muted">Press the button on your CoolWallet to approve this transaction. Your keys never leave the card.</p>
+        <div class="actions"><button class="btn">Send</button><button class="btn btn-ghost">Cancel</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Color</h2>
+    <div class="grid" id="swatches"></div>
+  </section>
+
+  <section>
+    <h2>Type</h2>
+    <p style="font:500 40px/1.15 var(--font-display);margin:0">Montserrat: headings</p>
+    <p style="font:400 20px/1.5 var(--font-body)">Barlow: body copy, UI labels and numbers 0123456789</p>
+    <p style="font:400 20px/1.5 var(--font-open-sans)">Open Sans: CoolBitX corporate</p>
+  </section>
+
+  <section>
+    <h2>Logos</h2>
+    <div class="logos" id="logos"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="muted">Sample page · tokens/tokens.css · fonts/fonts.css</span>
+    <span class="muted">Powered by <img id="ftr-logo" alt="CoolBitX"></span>
+  </div>
+</footer>
+
+<script>
+const L = '../logos/';
+const header = {
+  coolwallet:      { light: 'coolwallet/coolwallet-horizontal-dark.svg', dark: 'coolwallet/coolwallet-horizontal-white.svg' },
+  'coolwallet-pro':{ light: 'coolwallet-pro/coolwallet-pro-horizontal-gold.svg', dark: 'coolwallet-pro/coolwallet-pro-horizontal-silver.svg' },
+  coolbitx:        { light: 'coolbitx/coolbitx-logo-black.svg', dark: 'coolbitx/coolbitx-logo-white.svg' },
+};
+const hero = {
+  coolwallet: '../images/coolwallet-pro/lifestyle/card-phone-text.jpg',
+  'coolwallet-pro': '../images/coolwallet-pro/lifestyle/coolwalletpro10.jpg',
+  coolbitx: '../images/coolwallet-pro/press/cwp-and-cws-together.jpg',
+};
+const swatches = {
+  coolwallet: [['Yellow','--cw-yellow','#F7B419'],['Navy','--cw-navy','#1C324A'],['Gray','--cw-gray','#939393'],['Charcoal','--cw-charcoal','#1B202A']],
+  'coolwallet-pro': [['Gold','--cwp-gold','#C69C6D'],['Gold gradient','--cwp-gradient-gold',''],['Silver gradient','--cwp-gradient-silver',''],['Dark gradient','--cwp-gradient-dark','']],
+  coolbitx: [['Gold','--cbx-gold','#AA8E4E'],['Gray','--cbx-gray','#939393'],['Charcoal','--cbx-charcoal','#1B202A']],
+};
+const logoSets = [
+  ['coolwallet/coolwallet-horizontal-dark.svg', '#FFFFFF', 'CoolWallet: dark on white'],
+  ['coolwallet/coolwallet-horizontal-white.svg', '#1C324A', 'CoolWallet: white on navy'],
+  ['coolwallet/coolwallet-shield-white.svg', '#1B202A', 'Shield: white on charcoal'],
+  ['coolwallet-pro/coolwallet-pro-horizontal-gold.svg', '#000000', 'Pro: gold on black'],
+  ['coolwallet-pro/coolwallet-pro-horizontal-silver.svg', '#000000', 'Pro: silver on black'],
+  ['coolbitx/coolbitx-logo-gold.svg', '#FFFFFF', 'CoolBitX: gold on white'],
+];
+const root = document.documentElement;
+// Optional URL params, e.g. index.html?brand=coolwallet-pro&theme=light
+const q = new URLSearchParams(location.search);
+if (header[q.get('brand')]) root.dataset.brand = q.get('brand');
+if (['light', 'dark'].includes(q.get('theme'))) root.dataset.theme = q.get('theme');
+function render() {
+  const b = root.dataset.brand, t = root.dataset.theme;
+  document.getElementById('hdr-logo').src = L + header[b][t];
+  document.getElementById('ftr-logo').src = L + (t === 'dark' ? 'coolbitx/coolbitx-logo-white.svg' : 'coolbitx/coolbitx-logo-black.svg');
+  document.getElementById('hero-img').src = hero[b];
+  document.getElementById('swatches').innerHTML = swatches[b].map(([n, v, h]) =>
+    `<div class="sw"><div style="background:var(${v})"></div><p>${n}<br><code>${h || v}</code></p></div>`).join('');
+  document.querySelectorAll('[data-set-brand]').forEach(el => el.setAttribute('aria-pressed', el.dataset.setBrand === b));
+  document.querySelectorAll('[data-set-theme]').forEach(el => el.setAttribute('aria-pressed', el.dataset.setTheme === t));
+}
+document.getElementById('logos').innerHTML = logoSets.map(([f, bg, cap]) =>
+  `<figure style="background:${bg};color:${bg === '#FFFFFF' ? '#1B202A' : '#FFFFFF'}"><img src="${L + f}" alt=""><figcaption>${cap}</figcaption></figure>`).join('');
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-set-brand]'), t = e.target.closest('[data-set-theme]');
+  if (b) root.dataset.brand = b.dataset.setBrand;
+  if (t) root.dataset.theme = t.dataset.setTheme;
+  if (b || t) render();
+});
+render();
+</script>
+</body>
+</html>

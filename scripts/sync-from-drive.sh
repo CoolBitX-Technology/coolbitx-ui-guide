@@ -10,8 +10,8 @@
 #
 # Managed (regenerated: never hand-edit): logos/  fonts/montserrat/  fonts/barlow/  images/
 #   reference/brand-guides/  reference/ad-banners/  reference/source-manifest.tsv
-# Hand-written (never touched): AGENTS.md README.md CLAUDE.md tokens/ fonts/fonts.css
-#   reference/product-specs.md examples/
+# Hand-written (never touched): AGENTS.md README.md CLAUDE.md LICENSE tokens/ fonts/fonts.css
+#   reference/product-specs.md examples/ scripts/
 #
 # Requires: bash, ImageMagick 7 (`magick`), poppler (`pdftoppm`), unzip, shasum or sha256sum.
 set -euo pipefail
@@ -157,7 +157,10 @@ for z in Montserrat Barlow; do
     else echo "WARN     $z-$w.ttf not found in $z.zip" >&2; fi
   done
   lic=$(unzip -Z1 "$zip" | grep -E '(^|/)OFL\.txt$' | head -1 || true)
-  [[ -n $lic ]] && unzip -o -j -q "$zip" "$lic" -d "$O/fonts/$lc"
+  if [[ -n $lic ]]; then unzip -o -j -q "$zip" "$lic" -d "$O/fonts/$lc"
+  # The OFL requires the license beside every copy; the Drive's Montserrat.zip ships without it.
+  elif [[ -f "$ROOT/scripts/font-licenses/$z-OFL.txt" ]]; then cp "$ROOT/scripts/font-licenses/$z-OFL.txt" "$O/fonts/$lc/OFL.txt"
+  else echo "WARN     no OFL.txt for $z: add scripts/font-licenses/$z-OFL.txt" >&2; fi
 done
 
 # ---------------------------------------------------------------- 4. images

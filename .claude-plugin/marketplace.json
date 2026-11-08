@@ -1,0 +1,15 @@
+{
+  "name": "coolbitx-ui-guide",
+  "description": "CoolBitX internal Claude Code plugins.",
+  "owner": {
+    "name": "CoolBitX",
+    "url": "https://github.com/CoolBitX-Technology"
+  },
+  "plugins": [
+    {
+      "name": "coolbitx",
+      "description": "CoolBitX / CoolWallet brand UI guide (skill: /coolbitx:ui-guide).",
+      "source": "./"
+    }
+  ]
+}

@@ -114,6 +114,8 @@ cpy "$D/Shield White.svg"            "$L/coolwallet/coolwallet-shield-white.svg"
 for v in horizontal vertical wordmark; do
   recolor "$L/coolwallet/coolwallet-$v-dark.svg" '#1[aA]1[aA]1[aA]' '#FFFFFF' "$L/coolwallet/coolwallet-$v-white.svg"
 done
+# 2025 guide "Darkmode": yellow wordmark (no shield) on navy #1C324A.
+recolor "$L/coolwallet/coolwallet-wordmark-dark.svg" '#1[aA]1[aA]1[aA]' '#F7B419' "$L/coolwallet/coolwallet-wordmark-yellow.svg"
 cpy "$D/png/CW logo dark horizontal.png"  "$L/coolwallet/coolwallet-horizontal-dark.png"
 cpy "$D/png/CW logo white horizontal.png" "$L/coolwallet/coolwallet-horizontal-white.png"
 cpy "$D/png/CW logo dark vertical.png"    "$L/coolwallet/coolwallet-vertical-dark.png"

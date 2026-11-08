@@ -1,0 +1,10 @@
+{
+  "name": "coolbitx",
+  "description": "CoolBitX and CoolWallet brand UI guide: design tokens, fonts, official logos, product photography and brand rules for building on-brand interfaces.",
+  "author": {
+    "name": "CoolBitX",
+    "url": "https://coolbitx.com"
+  },
+  "homepage": "https://github.com/CoolBitX-Technology/coolbitx-ui-guide",
+  "repository": "https://github.com/CoolBitX-Technology/coolbitx-ui-guide"
+}

@@ -205,6 +205,14 @@ This repo is also a Claude Code plugin marketplace (`coolbitx-ui-guide`) with on
   ```
 
   Claude Code 2.1.275 or later can do both in one step: `/plugin install coolbitx --marketplace CoolBitX-Technology/coolbitx-ui-guide`.
+- **Install from a clone** when the commands above fail with "Repository not found". Claude Code clones the marketplace with your machine's default GitHub credentials, so this happens when they belong to an account outside the org (for example, a personal account as the default, with org access only through a per-repo credential helper). Point the marketplace at a local clone instead; git, with whatever credentials work for you, handles the fetching:
+
+  ```
+  /plugin marketplace add ~/path/to/coolbitx-ui-guide
+  /plugin install coolbitx@coolbitx-ui-guide
+  ```
+
+  To update, `git pull` in the clone, then run `/plugin marketplace update coolbitx-ui-guide`.
 - **Use:** the skill fires on its own when someone asks for CoolBitX or CoolWallet UI. To invoke it directly, use `/coolbitx:ui-guide`.
 - **Updates:** `plugin.json` has no `version`, so every pushed commit is a new release. If a teammate doesn't see a change, they run `/plugin marketplace update coolbitx-ui-guide`. Background auto-update of a private repo may need a GitHub token in the environment.
 - **Cost:** about 250 tokens in every session (the skill description), and about 1.1k tokens when the skill fires. The install copies the whole repo (about 22 MB) into the plugin cache.

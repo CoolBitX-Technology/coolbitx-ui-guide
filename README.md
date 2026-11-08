@@ -1,3 +1,5 @@
+![CoolBitX UI Guide: design tokens, fonts, logos and brand rules for CoolBitX and CoolWallet interfaces](.github/banner.png)
+
 # CoolBitX UI Guide
 
 Brand kit for building CoolBitX and CoolWallet interfaces: design tokens, fonts, logos, product photography, and the official brand guides.

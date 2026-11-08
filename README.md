@@ -2,6 +2,12 @@
 
 # CoolBitX UI Guide
 
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-D97757?logo=claude&logoColor=white)](AGENTS.md#11-claude-code-plugin)
+[![AGENTS.md](https://img.shields.io/badge/AGENTS.md-agent--ready-1C324A)](AGENTS.md)
+[![Design tokens](https://img.shields.io/badge/tokens-CSS_%C2%B7_W3C_JSON-F7B419?labelColor=1B202A)](tokens/)
+[![Brands](https://img.shields.io/badge/brands-CoolBitX_%C2%B7_CoolWallet-AA8E4E?labelColor=1B202A)](#coolbitx-ui-guide)
+[![License](https://img.shields.io/badge/license-MIT_%C2%B7_OFL_%C2%B7_brand_%C2%A9-555)](LICENSE)
+
 Brand kit for building CoolBitX and CoolWallet interfaces: design tokens, fonts, logos, product photography, and the official brand guides.
 
 - **For Claude Code:** install the plugin, and Claude will use the guide whenever you build CoolBitX or CoolWallet UI, in any project:

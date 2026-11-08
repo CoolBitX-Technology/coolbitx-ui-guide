@@ -4,7 +4,7 @@ This repository contains three kinds of material under different terms.
 
    Everything in logos/, images/, reference/brand-guides/ and reference/ad-banners/,
    and the CoolBitX, CoolWallet, CoolWallet Pro, CoolWallet Go and CoolWallet S names
-   and logos, are trademarks and copyrighted works of CoolBitX. They are shared
+   and logos, are trademarks and copyrighted works of CoolBitX Ltd. They are shared
    publicly so that partners and developers can represent the brands correctly. Use
    them only to refer to CoolBitX and its products, and only as the official brand
    guides allow (see AGENTS.md). No other license is granted. These files are the
@@ -21,7 +21,7 @@ This repository contains three kinds of material under different terms.
    The documentation, design tokens (tokens/), font stylesheet (fonts/fonts.css),
    examples, scripts and Claude Code plugin files are licensed as follows:
 
-   Copyright (c) 2026 CoolBitX
+   Copyright (c) 2026 CoolBitX Ltd.
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
